@@ -23,7 +23,7 @@ template <unsigned int blockSize>
 __global__ void reduce1DDiv(float *g_idata1, float *g_idata2, float *g_odata, int N);
 
 
-void read_matrix(matrix* A, char* file){
+void read_matrix(matrix* A, const char* file){
     //read matrix in from file, store in column-major order
     //A* must point to an uninitialized matrix
 
@@ -49,7 +49,7 @@ void read_matrix(matrix* A, char* file){
     printf("read %s [%ix%i]\n",file,A->dim[0],A->dim[1]); 
 }
 
-void write_matrix(matrix A, char* file){
+void write_matrix(matrix A, const char* file){
     //write matrix to file using column-major order
     //dimensions are written as leading ints
 

@@ -12,7 +12,7 @@
 #define TRIALS 10
 
 
-char *tname[] = {"total","sgemm","eps","vecdiv","vecmult","sumrows","sumcols","coldiv","rowdiv","check"};
+const char *tname[] = {"total","sgemm","eps","vecdiv","vecmult","sumrows","sumcols","coldiv","rowdiv","check"};
 
 int vecdiv_block_size = BLOCK_SIZE;
 int eps_block_size = BLOCK_SIZE;

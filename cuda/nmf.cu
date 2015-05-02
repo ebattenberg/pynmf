@@ -15,7 +15,7 @@ int MN_params[] = {128, 32, 128, 8}; //M*N size reduction (whole matrix)
 int N_params[] = {128,32,1,1}; //N size reductions (rows)
 int M_params[] = {256,4,1,1}; //M size reductions (cols)
 
-char *tname[] = {"total","sgemm","eps","vecdiv","vecmult","sumrows","sumcols","coldiv","rowdiv","check"};
+const char *tname[] = {"total","sgemm","eps","vecdiv","vecmult","sumrows","sumcols","coldiv","rowdiv","check"};
 
 
 void update_div(matrix W, matrix H, matrix X, const float thresh, const int max_iter, double* t, int verbose);
