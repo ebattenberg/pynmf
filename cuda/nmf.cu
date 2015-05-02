@@ -33,9 +33,9 @@ int main(int argc, char *argv[]){
     // X - matrix to factorize
     // W - initial W matrix
     // H - initial H matrix
-    read_matrix(&W,"../W2.bin");
-    read_matrix(&X,"../X2.bin");
-    read_matrix(&H,"../H2.bin");
+    read_matrix(&W,"../data/W.bin");
+    read_matrix(&X,"../data/X.bin");
+    read_matrix(&H,"../data/H.bin");
 
     int max_iter;
     if(argc > 1)
@@ -51,8 +51,8 @@ int main(int argc, char *argv[]){
 
     // write results matrices to binary files
     // (can be read with export_bin.m in Matlab)
-    write_matrix(W,"../Wout.bin");
-    write_matrix(H,"../Hout.bin");
+    write_matrix(W,"../data/Wout.bin");
+    write_matrix(H,"../data/Hout.bin");
 
     destroy_matrix(&W);
     destroy_matrix(&H);

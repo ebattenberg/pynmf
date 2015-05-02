@@ -477,7 +477,7 @@ void matrix_multiply_ABt_d( matrix a, matrix b, matrix c ){
     }
 }
 
-float matrix_difference_norm_d(action_t action, matrix a, matrix b, int* params){
+float matrix_difference_norm_d(action_t action, matrix a, matrix b, const int* params){
     //memory allocated and not freed
     //block1 - block size for first reduction level
     //block2 - "" for 2nd "" (set to 1 if not using 2nd level)
@@ -488,6 +488,10 @@ float matrix_difference_norm_d(action_t action, matrix a, matrix b, int* params)
     int lapt1 = params[1];
     int lapt2 = params[3];
 
+    return matrix_difference_norm_d(action, a, b, block1, block2, lapt1, lapt2);
+}
+
+float matrix_difference_norm_d(action_t action, matrix a, matrix b, int block1, int block2, int lapt1, int lapt2){
     static int r1size = 0;
     static float *r1 = NULL;
     static float *result_d = NULL;
@@ -602,7 +606,7 @@ float matrix_difference_norm_d(action_t action, matrix a, matrix b, int* params)
 
 }
 
-float matrix_div_d(action_t action, matrix a, matrix b, int* params){
+float matrix_div_d(action_t action, matrix a, matrix b, const int* params){
     //memory allocated and not freed
     //block1 - block size for first reduction level
     //block2 - "" for 2nd "" (set to 1 if not using 2nd level)
@@ -613,6 +617,11 @@ float matrix_div_d(action_t action, matrix a, matrix b, int* params){
     int block2 = params[2];
     int lapt1 = params[1];
     int lapt2 = params[3];
+
+    return matrix_div_d(action, a, b, block1, block2, lapt1, lapt2);
+}
+
+float matrix_div_d(action_t action, matrix a, matrix b, int block1, int block2, int lapt1, int lapt2){
 
     static int r1size = 0;
     static float *r1 = NULL;
@@ -847,7 +856,7 @@ __global__ void colMul(float* a, float* b, float* c, int M, int N){
     }
 }
 
-void sum_cols_d(action_t action, matrix a, matrix c, int* params){
+void sum_cols_d(action_t action, matrix a, matrix c, const int* params){
     //memory allocated and not freed
     //block1 - block size for first reduction level
     //block2 - "" for 2nd "" (set to 1 if not using 2nd level)
@@ -858,6 +867,10 @@ void sum_cols_d(action_t action, matrix a, matrix c, int* params){
     int lapt1 = params[1];
     int lapt2 = params[3];
 
+    sum_cols_d(action, a, c, block1, block2, lapt1, lapt2);
+}
+
+void sum_cols_d(action_t action, matrix a, matrix c, int block1, int block2, int lapt1, int lapt2){
     static int r1size = 0;
     static float *r1 = NULL;
     if(action==cleanup){
@@ -961,7 +974,7 @@ void sum_cols_d(action_t action, matrix a, matrix c, int* params){
 
 }
 
-void sum_rows_d(action_t action, matrix a, matrix c, int* params){
+void sum_rows_d(action_t action, matrix a, matrix c, const int* params){
     //memory allocated and not freed
     //block1 - block size for first reduction level
     //block2 - "" for 2nd "" (set to 1 if not using 2nd level)
@@ -973,6 +986,10 @@ void sum_rows_d(action_t action, matrix a, matrix c, int* params){
     int lapt1 = params[1];
     int lapt2 = params[3];
 
+    sum_rows_d(action, a, c, block1, block2, lapt1, lapt2);
+}
+
+void sum_rows_d(action_t action, matrix a, matrix c, int block1, int block2, int lapt1, int lapt2){
     static int r1size = 0;
     static float *r1 = NULL;
     if(action==cleanup){

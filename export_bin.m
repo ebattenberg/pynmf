@@ -11,7 +11,7 @@ H = [1 2 3; 4 5 6];
 
 
 
-fid = fopen([path 'Xs.bin'],'w');
+fid = fopen([path 'data/Xs.bin'],'w');
 
 
 fwrite(fid,size(X),'int');
@@ -22,7 +22,7 @@ fclose(fid);
 
 
 
-fid = fopen([path 'Ws.bin'],'w');
+fid = fopen([path 'data/Ws.bin'],'w');
 
 fwrite(fid,size(W),'int');
 count = fwrite(fid,W(:),'float');
@@ -30,7 +30,7 @@ fprintf('wrote file with %u elements\n',count)
 
 fclose(fid);
 
-fid = fopen([path 'Hs.bin'],'w');
+fid = fopen([path 'data/Hs.bin'],'w');
 
 fwrite(fid,size(H),'int');
 count = fwrite(fid,H(:),'float');
@@ -42,7 +42,7 @@ fclose(fid);
 
 %% write out binary matrices stored in X,W,H with dimensions as first two ints
 
-fid = fopen([path 'X2.bin'],'w');
+fid = fopen([path 'data/X.bin'],'w');
 
 
 fwrite(fid,size(X),'int');
@@ -53,7 +53,7 @@ fclose(fid);
 
 
 
-fid = fopen([path 'W2.bin'],'w');
+fid = fopen([path 'data/W.bin'],'w');
 
 fwrite(fid,size(W),'int');
 count = fwrite(fid,W(:),'float');
@@ -61,7 +61,7 @@ fprintf('wrote file with %u elements\n',count)
 
 fclose(fid);
 
-fid = fopen([path 'H2.bin'],'w');
+fid = fopen([path 'data/H.bin'],'w');
 
 fwrite(fid,size(H),'int');
 count = fwrite(fid,H(:),'float');
@@ -73,7 +73,7 @@ fclose(fid);
 
 %% read in binary matrix Wout.bin and Hout.bin
 
-fid = fopen([path 'hmat.bin'],'r');
+fid = fopen([path 'data/hmat.bin'],'r');
 
 
 dim = fread(fid,2,'int');

@@ -26,7 +26,7 @@
 int mkl_threads = MKL_THREADS;
 int omp_threads = OMP_THREADS;
 
-char *tname[] = {"sgemm","eps","vecdiv","vecmult","sumrows","sumcols","coldiv","rowdiv","check","total"};
+const char *tname[] = {"sgemm","eps","vecdiv","vecmult","sumrows","sumcols","coldiv","rowdiv","check","total"};
 
 
 void update_div(matrix W, matrix H, matrix X, const float thresh, const int max_iter, double* t);
@@ -41,13 +41,13 @@ int main(int argc, char* argv[]){
     //factor X into W*H
     matrix W,H,X,W0,H0,Wf,Hf;
     
-    read_matrix(&W0,"../W.bin");
-    read_matrix(&H0,"../H.bin");
-    read_matrix(&X,"../X.bin");
+    read_matrix(&W0,"../data/W.bin");
+    read_matrix(&H0,"../data/H.bin");
+    read_matrix(&X,"../data/X.bin");
 
     //final matrices from matlab version (after 200 iterations)
-    read_matrix(&Wf,"../Wf.bin");
-    read_matrix(&Hf,"../Hf.bin");
+    read_matrix(&Wf,"../data/Wf.bin");
+    read_matrix(&Hf,"../data/Hf.bin");
 
     create_matrix(&W,W0.dim[0],W0.dim[1],0);
     create_matrix(&H,H0.dim[0],H0.dim[1],0);
