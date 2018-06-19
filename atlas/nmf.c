@@ -41,9 +41,9 @@ int main(){
     //factor X into W*H
     matrix W,H,X;
     
-    read_matrix(&W,"../W.bin");
-    read_matrix(&X,"../X.bin");
-    read_matrix(&H,"../H.bin");
+    read_matrix(&W,"../data/W.bin");
+    read_matrix(&X,"../data/X.bin");
+    read_matrix(&H,"../data/H.bin");
 
     update_div(W,H,X);
 

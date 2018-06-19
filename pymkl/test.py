@@ -9,7 +9,6 @@ import nmf
 
 def npy_from_file(filename):
     fp = open(filename,'rb')
-    #fp = open('/home/ericb/school/parlab/working/parlab/nmf/trunk/H.bin','rb')
     dim = array.array('i') 		#init int array
     dim.fromfile(fp,2) 		#read in 2 int
     N = dim[0]*dim[1] 		#number of values to read
@@ -30,7 +29,7 @@ def npy_to_file(A,filename):
     fp.close()
     return
 
-path = '/home/ericb/projects/nmf/trunk/'
+path = '../data/'
 X = npy_from_file(path + 'X.bin')
 W = npy_from_file(path + 'W.bin')
 H = npy_from_file(path + 'H.bin')

@@ -15,7 +15,7 @@ int MN_params[] = {128, 32, 128, 8}; //M*N size reduction (whole matrix)
 int N_params[] = {128,32,1,1}; //N size reductions (rows)
 int M_params[] = {256,4,1,1}; //M size reductions (cols)
 
-char *tname[] = {"total","sgemm","eps","vecdiv","vecmult","sumrows","sumcols","coldiv","rowdiv","check"};
+const char *tname[] = {"total","sgemm","eps","vecdiv","vecmult","sumrows","sumcols","coldiv","rowdiv","check"};
 
 
 void update_div(matrix W, matrix H, matrix X, const float thresh, const int max_iter, double* t, int verbose);
@@ -33,9 +33,9 @@ int main(int argc, char *argv[]){
     // X - matrix to factorize
     // W - initial W matrix
     // H - initial H matrix
-    read_matrix(&W,"../W2.bin");
-    read_matrix(&X,"../X2.bin");
-    read_matrix(&H,"../H2.bin");
+    read_matrix(&W,"../data/W.bin");
+    read_matrix(&X,"../data/X.bin");
+    read_matrix(&H,"../data/H.bin");
 
     int max_iter;
     if(argc > 1)
@@ -51,8 +51,8 @@ int main(int argc, char *argv[]){
 
     // write results matrices to binary files
     // (can be read with export_bin.m in Matlab)
-    write_matrix(W,"../Wout.bin");
-    write_matrix(H,"../Hout.bin");
+    write_matrix(W,"../data/Wout.bin");
+    write_matrix(H,"../data/Hout.bin");
 
     destroy_matrix(&W);
     destroy_matrix(&H);

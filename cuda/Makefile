@@ -35,7 +35,7 @@ cudaroot  := /usr/local/cuda
 
 
 #----- C compilation options ------
-gcc        := /usr/bin/gcc-4.0
+gcc        := /usr/bin/gcc
 cflags     += $(opt) $(dbg) $(warn)
 clib_paths :=
 

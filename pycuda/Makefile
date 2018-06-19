@@ -12,7 +12,7 @@
 target    := nmf.so
 
 # List of sources, with .c, .cu, and .cc extensions
-sources   := nmf.cu run_nmf.cu matrix.cu
+sources   := nmf.cu run_nmf.cu ../cuda/matrix.cu
 #sources   := adder.c adder_d.cu
 
 # Other things that need to be built, e.g. .cubin files
@@ -36,11 +36,11 @@ cudaroot  := /usr/local/cuda
 
 #----- C compilation options ------
 gcc        := /usr/bin/gcc
-cflags     += $(opt) $(dbg) $(warn) -fPIC 
-clib_paths :=
+cflags     += $(opt) $(dbg) $(warn) -fPIC $(shell python-config --cflags)
+clib_paths := $(shell python-config --ldflags)
 
-cinc_paths := -I $(cudaroot)/include -I/usr/include/python2.7
-clibraries := -lcuda -lcudart -lblas
+cinc_paths := -I $(cudaroot)/include $(shell python-config --includes)
+clibraries := -lcuda -lcudart -lblas $(shell python-config --libs)
 
 
 #----- C++ compilation options ------
@@ -54,9 +54,9 @@ cclibraries :=
 
 nvcc        := $(cudaroot)/bin/nvcc
 cuflags     += $(opt) $(dbg) -Xcompiler -fPIC 
-culib_paths := -L$(cudaroot)/lib
-cuinc_paths := -I $(cudaroot)/include -I/usr/include/python2.7
-culibraries := -lcublas
+culib_paths := -L$(cudaroot)/lib $(shell python-config --ldflags)
+cuinc_paths := -I $(cudaroot)/include -I/usr/local/lib/python2.7/site-packages/numpy/core/include $(shell python-config --include)
+culibraries := -lcublas $(shell python-config --libs)
 
 
 lib_paths   := $(culib_paths) $(cclib_paths) $(clib_paths)

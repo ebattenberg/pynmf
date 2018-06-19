@@ -12,7 +12,7 @@
 #define TRIALS 10
 
 
-char *tname[] = {"total","sgemm","eps","vecdiv","vecmult","sumrows","sumcols","coldiv","rowdiv","check"};
+const char *tname[] = {"total","sgemm","eps","vecdiv","vecmult","sumrows","sumcols","coldiv","rowdiv","check"};
 
 int vecdiv_block_size = BLOCK_SIZE;
 int eps_block_size = BLOCK_SIZE;
@@ -54,14 +54,14 @@ int main(int argc, char* argv[]){
     //factor X into W*H
     matrix W,H,X,W0,H0,Wf,Hf;
     
-    read_matrix(&W0,"../W.bin");
-    read_matrix(&H0,"../H.bin");
-    read_matrix(&X,"../X.bin");
+    read_matrix(&W0,"../data/W.bin");
+    read_matrix(&H0,"../data/H.bin");
+    read_matrix(&X,"../data/X.bin");
 
     //final matrices from matlab version (after 200 iterations)
     //(for comparison)
-    read_matrix(&Wf,"../Wf.bin");
-    read_matrix(&Hf,"../Hf.bin");
+    read_matrix(&Wf,"../data/Wf.bin");
+    read_matrix(&Hf,"../data/Hf.bin");
 
     create_matrix_on_both(&W,W0.dim[0],W0.dim[1],0);
     create_matrix_on_both(&H,H0.dim[0],H0.dim[1],0);
@@ -123,8 +123,8 @@ int main(int argc, char* argv[]){
     /*
     copy_matrix_from_device(&W);
     copy_matrix_from_device(&H);
-    write_matrix(W,"../Wout.bin");
-    write_matrix(H,"../Hout.bin");
+    write_matrix(W,"../data/Wout.bin");
+    write_matrix(H,"../data/Hout.bin");
     */
 
 
